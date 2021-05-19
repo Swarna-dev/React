@@ -6,14 +6,13 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App /> 
   </React.StrictMode>,
   document.getElementById('root')
 );
 //to know how variables work in react
 const name = 'SWARNA';
 const element = <h1>Hello, {name} element</h1>;
-debugger;
 ReactDOM.render(
   element,
   document.getElementById('content')
@@ -44,7 +43,21 @@ var a=(x)=>{       //function(){
 }
 a("function declaration");
 
-//
+//function call
+function nameFormat(user){
+return user.firstName+" "+user.lastName;
+}
+var user={
+  firstName:'ABC',
+  lastName:'DEF'
+};
+var element1=(
+  <h1>Hello,{nameFormat(user)}</h1>
+);
+ReactDOM.render(
+  element1,
+  document.getElementById("function-call")
+);
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
