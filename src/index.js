@@ -38,7 +38,7 @@ demoObj.method1();
 demoObj.method2();
 
 // arrow function
-var a=(x)=>{       //function(){
+var a=(x)=>{     //x=>x*2===> function(x){ return x*2}
     document.getElementById("function").innerHTML=x;
 }
 a("function declaration");
@@ -59,9 +59,9 @@ ReactDOM.render(
   document.getElementById("function-call"),  
 );
 
-const title = user.firstName;
+const title = "title";
 // This is safe:
-var element3 = <p>{title}</p>;
+var element3 = <h1>{title}</h1>;
 var element2=function(){
   document.getElementById("function-call").appendChild=element3;
 }
@@ -246,6 +246,43 @@ const numbers = [1, 2, 3, 4, 5];
 ReactDOM.render(
   <NumberList numbers={numbers} />,
   document.getElementById('key')
+);
+
+//form input
+class NameForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    alert('A name was submitted: ' + this.state.value);
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <input type="text" value={this.state.value} onChange={this.handleChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    );
+  }
+}
+
+ReactDOM.render(
+  <NameForm />,
+  document.getElementById('root')
 );
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
